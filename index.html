@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>snib.games</title>
+<link rel="icon" href="logo/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1013; --panel:#16191E; --panel2:#1C2027; --line:#262B33;
+    --text:#ECEEF1; --muted:#9AA3AE; --teal:#45B3C7; --teal2:#6FC5D6; --gold:#B9C24E;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  html{overflow-x:clip}
+  body{overflow-x:clip;background:var(--bg);color:var(--text);font-family:Outfit,system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* nav */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none}
+  .brand img{width:32px;height:32px}
+  .brand span{color:var(--teal)}
+  .nav-links{display:flex;gap:22px;font-size:15px;color:var(--muted)}
+  .nav-links a{text-decoration:none}
+  .nav-links a:hover{color:var(--text)}
+
+  /* hero */
+  .hero{position:relative;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:40px;padding:56px 0 72px}
+  .hero::before{content:"";position:absolute;right:0;top:-20%;width:min(640px,100%);height:640px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(69,179,199,.22),rgba(69,179,199,0));pointer-events:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal2);
+    background:rgba(69,179,199,.1);border:1px solid rgba(69,179,199,.3);padding:6px 12px;border-radius:999px}
+  h1{font-size:clamp(40px,6.4vw,76px);line-height:1.02;letter-spacing:-.02em;margin:20px 0 18px;font-weight:800}
+  h1 em{font-style:normal;color:var(--teal)}
+  .lede{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:30em;margin:0 0 28px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:600;text-decoration:none;font-size:16px}
+  .btn.primary{background:var(--teal);color:#0B1417}
+  .btn.primary:hover{background:var(--teal2)}
+  .btn.ghost{border:1px solid var(--line);background:var(--panel)}
+  .btn.ghost:hover{border-color:var(--teal)}
+  /* the real Snib, sitting on a lit teal shelf */
+  .stage{position:relative;justify-self:center;width:340px;display:flex;flex-direction:column;align-items:center;padding-top:20px}
+  .stage::before{content:"";position:absolute;left:50%;top:40px;width:320px;height:320px;transform:translateX(-50%);border-radius:50%;
+    background:radial-gradient(closest-side,rgba(69,179,199,.30),rgba(69,179,199,.10) 62%,rgba(69,179,199,0));
+    box-shadow:inset 0 0 0 1px rgba(111,197,214,.16)}
+  .stage .photo{position:relative;z-index:1;display:block;width:228px;height:auto;margin-bottom:-11px;
+    filter:drop-shadow(0 0 1px rgba(111,197,214,.55)) drop-shadow(-6px -4px 14px rgba(69,179,199,.22)) drop-shadow(0 18px 22px rgba(0,0,0,.45))}
+  .shelf{position:relative;width:300px;height:22px;border-radius:12px;
+    background:linear-gradient(180deg,#2A3A40 0,#1C2329 45%,#151A1F 100%);
+    box-shadow:inset 0 1px 0 rgba(111,197,214,.55),0 0 28px rgba(69,179,199,.18),0 22px 40px rgba(0,0,0,.55)}
+  .shelf::before{content:"";position:absolute;left:50%;top:-10px;width:210px;height:18px;transform:translateX(-50%);border-radius:50%;
+    background:radial-gradient(closest-side,rgba(0,0,0,.55),rgba(0,0,0,0));z-index:0}
+  .stage .tag{margin-top:18px;white-space:nowrap;background:var(--panel2);border:1px solid var(--line);
+    font-size:13px;color:var(--muted);padding:6px 12px;border-radius:999px}
+  .stage .tag b{color:var(--text)}
+
+  /* section */
+  section{padding:24px 0 64px}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:20px}
+  h2{font-size:28px;margin:0;letter-spacing:-.01em}
+  .sec-head p{margin:0;color:var(--muted);font-size:15px}
+
+  /* featured app tile */
+  .feature{display:grid;grid-template-columns:1.35fr 1fr;background:var(--panel);border:1px solid var(--line);border-radius:24px;overflow:hidden;margin-bottom:20px}
+  .feature .art{position:relative;min-height:320px;background:#1E8F43 url("https://bump.soccer/og.jpg") center/cover no-repeat}
+  .feature .art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,16,19,0) 60%,rgba(22,25,30,1))}
+  .feature .body{padding:32px;display:flex;flex-direction:column;justify-content:center}
+  .app-head{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+  .app-icon{width:64px;height:64px;border-radius:16px;flex:none;background:#0a1433 url("https://bump.soccer/icon-512.png") center/cover;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+  .app-head h3{font-size:26px;margin:0;line-height:1.1}
+  .app-head small{color:var(--muted);font-size:14px}
+  .feature p.desc{font-size:17px;color:#C9CED5;margin:0 0 18px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .chip{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);color:#C9CED5}
+  .chip.free{background:#FFD23F;color:#0a1433;border-color:#FFD23F}
+  .chip.dev{background:rgba(185,194,78,.14);border-color:rgba(185,194,78,.4);color:#D6DD7E}
+  .chip.friends{background:rgba(69,179,199,.12);border-color:rgba(69,179,199,.4);color:var(--teal2)}
+
+  /* grid tiles */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .tile{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px;text-decoration:none;transition:border-color .15s,transform .15s}
+  a.tile:hover{border-color:var(--teal);transform:translateY(-2px)}
+  .tile .app-icon{width:56px;height:56px;border-radius:14px;display:grid;place-items:center}
+  .tile h3{margin:0;font-size:20px}
+  .tile p{margin:0;color:var(--muted);font-size:15px;flex:1}
+  .tile .foot{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px}
+  .tile .get{font-weight:600;color:var(--teal2)}
+  .tile.muted .get{color:var(--muted)}
+  .i-tenebra{background:linear-gradient(145deg,#3A2A5C,#1B1430)}
+  .i-farm{background:linear-gradient(145deg,#5E8F3A,#2F5A2A)}
+  .i-arena{background:repeating-linear-gradient(45deg,#2A2F38 0 8px,#22262E 8px 16px)}
+
+  /* about + discord */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px}
+  .card h3{margin:0 0 8px;font-size:20px}
+  .card p{margin:0 0 16px;color:var(--muted)}
+  .card p:last-child{margin-bottom:0}
+  .discord{background:linear-gradient(135deg,#1A2A30,#16191E);border-color:rgba(69,179,199,.35)}
+  .mail{font-weight:600;color:var(--text);text-decoration:none;border-bottom:1px solid var(--teal)}
+
+  footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;padding:24px 0 56px;gap:44px;text-align:left}
+    .hero .stage{order:-1;width:100%;max-width:300px;padding-top:4px}
+    .stage::before{top:10px;width:250px;height:250px}
+    .stage .photo{width:160px}
+    .shelf{width:220px;height:18px}
+    .shelf::before{width:150px}
+    .hero::before{right:0;top:-10%;width:100%;height:420px}
+    .feature{grid-template-columns:1fr}
+    .feature .art{min-height:190px}
+    .feature .art::after{background:linear-gradient(180deg,rgba(14,16,19,0) 55%,rgba(22,25,30,1))}
+    .feature .body{padding:22px}
+    .tiles{grid-template-columns:1fr}
+    .about{grid-template-columns:1fr}
+    .nav-links a.hide-sm{display:none}
+    .sec-head{flex-direction:column;gap:4px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#"><img src="logo/icon.svg" alt="">snib<span>.games</span></a>
+    <div class="nav-links">
+      <a href="#games">Games</a>
+      <a class="hide-sm" href="#about">About</a>
+      <a href="https://discord.gg/xCsCzMVCr5">Discord</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <span class="eyebrow">An independent game studio</span>
+      <h1>Small games, <em>run by a cat.</em></h1>
+      <p class="lede">snib.games makes online games to play with friends. Snib runs the place: he reviews every build by sitting on the keyboard.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://bump.soccer">Play Bump Soccer</a>
+        <a class="btn ghost" href="#games">See all games</a>
+      </div>
+    </div>
+    <div class="stage">
+      <img class="photo" src="logo/snib-cutout.webp" width="228" height="373" alt="Snib, a grey longhaired cat with a teal collar, sitting and winking">
+      <div class="shelf" aria-hidden="true"></div>
+      <span class="tag"><b>Snib</b> &middot; studio head</span>
+    </div>
+  </header>
+
+  <section id="games">
+    <div class="sec-head">
+      <h2>Games</h2>
+      <p>Four projects, one of them finished enough to brag about.</p>
+    </div>
+
+    <article class="feature">
+      <div class="art" role="img" aria-label="Bump Soccer: round players on a bright green pitch"></div>
+      <div class="body">
+        <div class="app-head">
+          <div class="app-icon" aria-hidden="true"></div>
+          <div><h3>Bump Soccer</h3><small>Turn-based soccer party game</small></div>
+        </div>
+        <p class="desc">Free online soccer with friends. Everyone aims in secret, then every shot plays at once.</p>
+        <div class="chips">
+          <span class="chip free">Free</span><span class="chip">Web</span><span class="chip">Android</span><span class="chip">iOS</span>
+        </div>
+        <div class="cta"><a class="btn primary" href="https://bump.soccer">Play at bump.soccer</a></div>
+      </div>
+    </article>
+
+    <div class="tiles">
+      <a class="tile" href="https://mmo.snib.games">
+        <div class="app-icon i-tenebra" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D9CCFF" stroke-width="2" stroke-linecap="round"><path d="M14.5 3.5l6 6M19 2l3 3-11 11-3-3z"/><path d="M8 13l-5 5 3 3 5-5"/></svg>
+        </div>
+        <h3>Tenebra</h3>
+        <p>A Stardew-style online hack and slash. Cosy fields, less cosy nights.</p>
+        <div class="foot"><span class="chip dev">In development</span><span class="get">mmo.snib.games &rarr;</span></div>
+      </a>
+      <a class="tile" href="https://server.snib.games">
+        <div class="app-icon i-farm" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F1F5D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 11c0-4 3-6 7-6 0 4-3 6-7 6zM12 14c0-3-2-5-6-5 0 3 2 5 6 5z"/><path d="M5 21h14"/></svg>
+        </div>
+        <h3>Stardew farm servers</h3>
+        <p>A shared Stardew Valley farm that only runs while someone is playing.</p>
+        <div class="foot"><span class="chip friends">For friends</span><span class="get">server.snib.games &rarr;</span></div>
+      </a>
+      <div class="tile muted">
+        <div class="app-icon i-arena" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+        </div>
+        <h3>Arena</h3>
+        <p>Something new. Snib has not decided what to tell you yet.</p>
+        <div class="foot"><span class="chip dev">In development</span><span class="get">Soon</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="card">
+      <h3>About the studio</h3>
+      <p>snib.games is a small studio that builds games people play together, in a browser or on a phone, without accounts getting in the way. Snib is a grey longhaired cat with a teal collar. He supervises.</p>
+      <p>Write to <a class="mail" href="mailto:nando@snib.games">nando@snib.games</a></p>
+    </div>
+    <div class="card discord">
+      <h3>Join the Discord</h3>
+      <p>Find people to play with, report bugs, and see what is being built before it ships.</p>
+      <a class="btn primary" href="https://discord.gg/xCsCzMVCr5">Open Discord</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 snib.games</span>
+    <span>Run by Snib. Built by his staff.</span>
+  </div>
+</footer>
+</body>
+</html>

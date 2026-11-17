@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>Snib</title>
+  <!--
+    Snib, drawn rather than photographed: at 16px a photo of a longhaired cat
+    turns to grey mush, so this keeps only the shapes that survive - ear tufts,
+    the white bib, green-gold eyes, and the teal collar that the whole site is
+    themed around.
+  -->
+  <defs>
+    <linearGradient id="coat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A7ADB6"/>
+      <stop offset="1" stop-color="#6E757F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="14" fill="#14161A"/>
+
+  <!-- ears, with inner ear showing through -->
+  <path d="M13 26 L15 7 L30 17 Z" fill="url(#coat)"/>
+  <path d="M51 26 L49 7 L34 17 Z" fill="url(#coat)"/>
+  <path d="M17 22 L18 13 L26 18 Z" fill="#C08A8A"/>
+  <path d="M47 22 L46 13 L38 18 Z" fill="#C08A8A"/>
+
+  <!-- head -->
+  <path d="M32 15c11 0 19 7 19 17 0 10-8 17-19 17s-19-7-19-17c0-10 8-17 19-17Z" fill="url(#coat)"/>
+
+  <!-- tabby markings: the forehead M, faint so it reads as texture, not noise -->
+  <g stroke="#565C66" stroke-width="2.2" stroke-linecap="round" opacity=".55">
+    <path d="M26 20 L29 25"/><path d="M32 19 L32 24"/><path d="M38 20 L35 25"/>
+  </g>
+
+  <!-- white bib -->
+  <path d="M32 38c6 0 10 4 11 9-3 2-7 3-11 3s-8-1-11-3c1-5 5-9 11-9Z" fill="#F2F0EC"/>
+
+  <!-- eyes -->
+  <ellipse cx="24" cy="31" rx="4.6" ry="5.2" fill="#B9C24E"/>
+  <ellipse cx="40" cy="31" rx="4.6" ry="5.2" fill="#B9C24E"/>
+  <ellipse cx="24" cy="31" rx="1.7" ry="4.2" fill="#14161A"/>
+  <ellipse cx="40" cy="31" rx="1.7" ry="4.2" fill="#14161A"/>
+
+  <!-- nose -->
+  <path d="M32 37.5 L29.4 34.6 L34.6 34.6 Z" fill="#C08A8A"/>
+
+  <!-- his collar, and the tag -->
+  <path d="M20 47c3.5 2.5 7.6 3.8 12 3.8S40.5 49.5 44 47l2.6 4.6c-4.3 3-9.3 4.6-14.6 4.6s-10.3-1.6-14.6-4.6Z" fill="#45B3C7"/>
+  <circle cx="32" cy="55.5" r="3.4" fill="#6FC5D6"/>
+</svg>
