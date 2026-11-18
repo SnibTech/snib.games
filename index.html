@@ -83,7 +83,7 @@
   .chip.friends{background:rgba(69,179,199,.12);border-color:rgba(69,179,199,.4);color:var(--teal2)}
 
   /* grid tiles */
-  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
   .tile{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px;text-decoration:none;transition:border-color .15s,transform .15s}
   a.tile:hover{border-color:var(--teal);transform:translateY(-2px)}
   .tile .app-icon{width:56px;height:56px;border-radius:14px;display:grid;place-items:center}
@@ -94,6 +94,14 @@
   .tile.muted .get{color:var(--muted)}
   .i-tenebra{background:linear-gradient(145deg,#3A2A5C,#1B1430)}
   .i-farm{background:linear-gradient(145deg,#5E8F3A,#2F5A2A)}
+  /* the second feature, picture on the right: the Stardew Valley server */
+  .feature.flip{grid-template-columns:1fr 1.35fr}
+  .feature.flip .art{order:2}
+  .feature.flip .art::after{background:linear-gradient(270deg,rgba(14,16,19,0) 60%,rgba(22,25,30,1))}
+  .feature.stardew .art{display:block;background:#5BA9D8 url("images/stardew-server.jpg") left top/cover no-repeat}
+  .feature .app-icon.i-farm{display:grid;place-items:center;background:linear-gradient(145deg,#5E8F3A,#2F5A2A)}
+  .feature .points{margin:0 0 18px;padding-left:18px;color:#C9CED5;font-size:15px;display:grid;gap:6px}
+  .feature code{font-size:.92em;padding:1px 5px;border-radius:6px;background:var(--panel2);color:var(--teal2)}
   .i-arena{background:repeating-linear-gradient(45deg,#2A2F38 0 8px,#22262E 8px 16px)}
 
   /* about + discord */
@@ -119,6 +127,9 @@
     .feature{grid-template-columns:1fr}
     .feature .art{min-height:190px}
     .feature .art::after{background:linear-gradient(180deg,rgba(14,16,19,0) 55%,rgba(22,25,30,1))}
+    .feature.flip{grid-template-columns:1fr}
+    .feature.flip .art{order:0}
+    .feature.flip .art::after{background:linear-gradient(180deg,rgba(14,16,19,0) 55%,rgba(22,25,30,1))}
     .feature .body{padding:22px}
     .tiles{grid-template-columns:1fr}
     .about{grid-template-columns:1fr}
@@ -158,7 +169,7 @@
   <section id="games">
     <div class="sec-head">
       <h2>Games</h2>
-      <p>Four projects, one of them finished enough to brag about.</p>
+      <p>Four projects, two of them out and running.</p>
     </div>
 
     <article class="feature">
@@ -176,6 +187,28 @@
       </div>
     </article>
 
+    <article class="feature flip stardew">
+      <a class="art" href="https://server.snib.games" aria-label="The Stardew Valley server site: a farm your friends can just walk into"></a>
+      <div class="body">
+        <div class="app-head">
+          <div class="app-icon i-farm" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F1F5D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 11c0-4 3-6 7-6 0 4-3 6-7 6zM12 14c0-3-2-5-6-5 0 3 2 5 6 5z"/><path d="M5 21h14"/></svg>
+          </div>
+          <div><h3>Stardew Valley server</h3><small>Hosted farms for you and your friends</small></div>
+        </div>
+        <p class="desc">A farm your friends can just walk into. Nobody has to be home to host it: whoever turns up first starts it, new or from the save you already have.</p>
+        <ul class="points">
+          <li>Runs only while someone is playing, so it costs a few dollars a month</li>
+          <li>Every in-game day is saved, and nothing throws a save away</li>
+          <li>Snib is in the valley too: type <code>@snib</code> in the game chat and ask him anything</li>
+        </ul>
+        <div class="chips">
+          <span class="chip friends">For friends</span><span class="chip">Stardew Valley</span><span class="chip">Multiplayer</span>
+        </div>
+        <div class="cta"><a class="btn primary" href="https://server.snib.games">Start your server</a></div>
+      </div>
+    </article>
+
     <div class="tiles">
       <div class="tile">
         <div class="app-icon i-tenebra" aria-hidden="true">
@@ -185,14 +218,6 @@
         <p>A Stardew-style online hack and slash. Cosy fields, less cosy nights.</p>
         <div class="foot"><span class="chip dev">In development</span><span class="get">Soon</span></div>
       </div>
-      <a class="tile" href="https://server.snib.games">
-        <div class="app-icon i-farm" aria-hidden="true">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F1F5D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 11c0-4 3-6 7-6 0 4-3 6-7 6zM12 14c0-3-2-5-6-5 0 3 2 5 6 5z"/><path d="M5 21h14"/></svg>
-        </div>
-        <h3>Stardew farm servers</h3>
-        <p>A shared Stardew Valley farm that only runs while someone is playing.</p>
-        <div class="foot"><span class="chip friends">For friends</span><span class="get">server.snib.games &rarr;</span></div>
-      </a>
       <div class="tile muted">
         <div class="app-icon i-arena" aria-hidden="true">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
